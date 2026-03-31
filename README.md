@@ -67,7 +67,7 @@ Tested on Altera MAX 10 FPGA, this project demonstrates a modern digital design 
 
 📊 Example Waveform
 
-![Waveform Results](waveform/logic_viewer.png)
+![Waveform Results](Waveform/logic_viewer.png)
 
 🚀 How to Run
 
