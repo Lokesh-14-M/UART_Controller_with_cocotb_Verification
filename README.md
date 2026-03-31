@@ -3,28 +3,29 @@ A fully synthesizable UART (Universal Asynchronous Receiver-Transmitter) core de
 Tested on Altera MAX 10 FPGA, this project demonstrates a modern digital design workflow using Verilog RTL and Python-based verification.
 
 📁 Project Structure
-├── rtl/          # Verilog design files
-├── schematic/    # Generated architecture diagrams
-├── test/         # Cocotb testbench and Makefile
-├── waveform/     # Simulation waveforms (VCD + PDF)
+
+     rtl/          # Verilog design files
+     schematic/    # Generated architecture diagrams
+     test/         # Cocotb testbench and Makefile
+     waveform/     # Simulation waveforms (VCD + PDF)
 
 🔹 Details
 
-rtl/
-    uart_tx.v → Transmitter module
-    uart_rx.v → Receiver module
-    uart_top.v → Top module (loopback design)
-    Baud rate generator
+    rtl/
+        uart_tx.v → Transmitter module
+        uart_rx.v → Receiver module
+        uart_top.v → Top module (loopback design)
+        Baud rate generator
     
-schematic/
-    Quartus Prime diagrams (industry standard)
-    Yosys diagrams (open-source flow)
-
-test/
-    test_uart.py → Cocotb testbench
-    Makefile → Run simulation easily
-
-waveform/
+    schematic/
+        Quartus Prime diagrams (industry standard)
+        Yosys diagrams (open-source flow)
+    
+    test/
+        test_uart.py → Cocotb testbench
+        Makefile → Run simulation easily
+    
+    waveform/
       .vcd → Raw waveform data
       .pdf → Clean timing diagrams
 
@@ -52,33 +53,40 @@ waveform/
     The design is verified using cocotb, ensuring realistic hardware behavior.
 
 ✅ Test Cases
-0x55
-0xA5
-0x3C
-0xFF
+
+        0x55
+        0xA5
+        0x3C
+        0xFF
 
 🔍 Key Observation
-The receiver correctly captures 0x55
-Even while the transmitter prepares the next byte (0x45)
-✅ Demonstrates robust FSM synchronization
+
+    The receiver correctly captures 0x55
+    Even while the transmitter prepares the next byte (0x45)
+
 
 📊 Example Waveform
 
+    ![Waveform Results](waveform/your_screenshot.png)
+
 🚀 How to Run
+
 1️⃣ Install Dependencies
 
-Make sure you have:
-
-    Python 3
-    Icarus Verilog
-    Cocotb
-    GTKWave
+    Make sure you have:
+    
+        Python 3
+        Icarus Verilog
+        Cocotb
+        GTKWave
 
 2️⃣ Run Simulation
+
     cd test/
     make
 
 3️⃣ View Waveform
+
     gtkwave waveform/your_file.vcd
 
 📜 License
