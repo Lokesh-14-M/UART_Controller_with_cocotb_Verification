@@ -6,10 +6,10 @@ from cocotb.triggers import RisingEdge
 async def uart_loopback_test(dut):
 
   
-   # Change 10ns to 20ns to match the 50MHz parameters in your Verilog
+ 
 cocotb.start_soon(Clock(dut.clk, 20, units="ns").start())
 
-    # 🔁 Reset
+    #  Reset
     dut.rst.value = 1
     dut.tx_start.value = 0
     dut.tx_data.value = 0
@@ -19,7 +19,7 @@ cocotb.start_soon(Clock(dut.clk, 20, units="ns").start())
 
     dut.rst.value = 0
 
-    # 🧪 Test data list (multiple values looks professional)
+    #  Test data 
     test_vectors = [0x55, 0xA5, 0x3C, 0xFF]
 
     for data in test_vectors:
@@ -38,11 +38,11 @@ cocotb.start_soon(Clock(dut.clk, 20, units="ns").start())
 
         cocotb.log.info(f"Sent: {data:#04x}, Received: {received:#04x}")
 
-        # ✅ Assertion
+        #  Assertion
         assert received == data, f"Mismatch: sent {data:#04x}, got {received:#04x}"
 
         # small delay between packets
         for _ in range(20):
             await RisingEdge(dut.clk)
 
-    cocotb.log.info("✅ UART Loopback Test PASSED")
+    cocotb.log.info(" UART Loopback Test PASSED")
